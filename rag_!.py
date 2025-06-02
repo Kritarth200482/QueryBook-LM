@@ -25,7 +25,7 @@ if not os.getenv("GOOGLE_API_KEY"):
     api_key = getpass("Enter your Google API KEY: ")
     os.environ["GOOGLE_API_KEY"] = api_key
 
-pdf_path = Path(__file__).parent / "Course Structure and Curriculum B Tech Programme ECED.pdf"
+pdf_path = Path(__file__).parent / "YOUR_FILE_NAME_WHICH_YOU_WANT_TO_ASK_QUESTIONS_ON.pdf"
 if not pdf_path.exists():
     print("Pdf file not found")
     print("Please make sure the file is in the same directory as this script")
