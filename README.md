@@ -21,7 +21,7 @@ QueryBookLM is a lightweight Retrieval-Augmented Generation (RAG) AI agent that 
 
 🔐 Secure API Access: Uses environment variables for Google API key management.
 
-✅ How to Run Locally (Step-by-Step)
+# How to Run Locally (Step-by-Step)
 💡 This section will help you copy, configure, and run QueryBookLM in your local machine.
 
 🧾 1. Copy the Code & PDF
