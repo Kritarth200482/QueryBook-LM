@@ -2,85 +2,99 @@
 .
 
 📘 QueryBookLM
-QueryBookLM is a lightweight Retrieval-Augmented Generation (RAG) AI agent that allows you to ask natural language questions about a PDF document (like a curriculum or technical manual) and receive detailed, context-aware answers. Powered by Google Gemini Pro, LangChain, and Qdrant, it combines vector search and generative AI to simulate document understanding.
+QueryBookLM is a lightweight Retrieval-Augmented Generation (RAG) AI agent that allows you to ask natural language questions about any PDF document (like a curriculum, brochure, or guidebook) and receive detailed, accurate answers grounded in the content. Built using LangChain, Google Gemini Pro, and Qdrant, it combines semantic search and generative AI to simulate contextual document comprehension.
+
+# Tech Stack
+Component	Description
+Python 3.10+	Base programming language
+LangChain	Framework for building LLM-powered applications
+Google Generative AI	For generating embeddings and answers (Gemini Pro + embedding-001)
+Qdrant	Vector database used to store and retrieve text chunks
+Docker
+
 
 🚀 Features
-📄 PDF Ingestion: Uploads and parses PDF documents using LangChain’s PyPDFLoader.
+📄 PDF Ingestion: Automatically loads and parses PDF documents.
 
-✂️ Smart Chunking: Splits content into overlapping chunks using recursive text splitting for better semantic understanding.
+✂️ Recursive Text Chunking: Splits text into smart overlapping chunks to retain semantic meaning.
 
-🧠 Embeddings Generation: Creates embeddings using Google’s Generative AI Embedding model (models/embedding-001).
+🧠 Embeddings with Google GenAI: Creates vector embeddings using models/embedding-001.
 
-📦 Vector Storage with Qdrant: Stores chunk embeddings in a Qdrant vector database for efficient semantic search.
+💾 Vector Storage in Qdrant: Stores and retrieves vectorized chunks efficiently.
 
-❓ Query Answering: Retrieves the most relevant document chunks based on user queries and uses Gemini Pro to generate answers using that context.
+🧾 Context-Aware Answering: Answers your questions using only the content from the document.
 
-📑 Contextual Answering with Sources: Returns answers with page numbers and references to the original PDF content.
+🔎 Citations Included: Returns page numbers and matched text chunks as sources.
 
-💬 Interactive CLI: Asks questions in an interactive command-line session with example prompts.
+💬 Interactive CLI: Chat with your PDF directly from the terminal.
 
-🔐 Secure API Access: Uses environment variables for Google API key management.
+🔐 Environment-secured API keys using a .env file.
 
 # How to Run Locally (Step-by-Step)
-💡 This section will help you copy, configure, and run QueryBookLM in your local machine.
+🛠️ This section helps you set up QueryBookLM on your local machine.
 
-🧾 1. Copy the Code & PDF
-Open any folder on your system and paste the main.py code file into it.
+📁 1. Copy the Code and Your PDF
+Create a folder and paste the main.py file into it.
 
-Place your desired PDF (e.g., my-document.pdf) in the same folder.
+Place the PDF you want to ask questions about in the same folder.
 
-Open the folder in VS Code or any Python editor.
+Open that folder in Visual Studio Code (or any code editor).
 
-IMPORTANT: In main.py, update line 28 with your PDF file name:
+Update line 28 in main.py to reflect your PDF file name:
+
+pdf_path = Path(__file__).parent / "your-document-name.pdf"
+📄 2. Create a .env File
+In the same folder, create a .env file and add the following content:
 
 
-pdf_path = Path(__file__).parent / "my-document.pdf"
-📦 2. Install Required Dependencies
-Ensure you're using Python 3.10 or above. Then install the following packages:
+GOOGLE_API_KEY=your_google_genai_api_key
+QDRANT_API_KEY=your_qdrant_api_key   # Leave blank if running locally without authentication
+QDRANT_URL=http://localhost:6333
+📦 3. Install Required Dependencies
+Make sure you have Python 3.10+ installed. Then install the required packages:
 
 
-pip install langchain langchain-google-genai langchain-community langchain-qdrant qdrant-client
-🧠 3. Start Qdrant (Vector Database)
-If you haven't already, start Qdrant locally using Docker:
+pip install langchain langchain-google-genai langchain-community langchain-qdrant qdrant-client python-dotenv
+🧠 4. Start Qdrant (Local Vector DB)
+If you don’t already have Qdrant running locally, start it via Docker:
 
 
 docker run -p 6333:6333 qdrant/qdrant
-Alternatively, you can install it natively: https://qdrant.tech/documentation/quick-start
+🔁 This runs Qdrant on http://localhost:6333 as defined in your .env.
 
-🔐 4. Set Your Google Generative AI Key
-When you run the script, it will prompt:
-
-Enter your Google API key:
-Paste your Google API key here to proceed.
-
-▶️ 5. Run the Project
+▶️ 5. Run the Script
+Now, run the project using:
 
 python main.py
-You'll see:
+You’ll see a prompt like:
 
-arduino
-Copy
-Edit
 🎉 RAG AI Agent is ready!
 🗣️ Ask your question:
+Type questions such as:
 
 📂 Project Structure
 
 QueryBookLM/
-│
-├── main.py                    # Main Python script for running the RAG pipeline
-├── my-document.pdf            # Your target PDF file
-└── README.md                  # This documentation
-🧠 How It Works
-Load PDF ➝ Using PyPDFLoader.
+├── main.py              # Main script
+├── your-document.pdf    # PDF you want to query
+├── .env                 # API keys and config
+└── README.md
+⚙️ How It Works (Simplified Flow)
+Load → Reads your PDF file with PyPDFLoader.
 
-Split Text ➝ With overlap-aware chunking (RecursiveCharacterTextSplitter).
+Chunk → Splits the text into overlapping chunks.
 
-Generate Embeddings ➝ Using GoogleGenerativeAIEmbeddings.
+Embed → Embeds those chunks using Google’s embedding model.
 
-Store in Qdrant ➝ As vector embeddings for efficient similarity search.
+Store → Stores them in a local Qdrant vector store.
 
-Retrieve Context ➝ Top-k (default 4) chunks using semantic similarity.
+Retrieve → Finds the most relevant chunks to your query.
+
+Generate → Uses Gemini Pro to generate answers using those chunks only.
+
+Respond → Returns clean answers with citations.
+
+
 
 Prompt Gemini ➝ Custom prompt includes the retrieved context + user query.
 
