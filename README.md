@@ -17,7 +17,8 @@ QueryBookLM is a lightweight Retrieval-Augmented Generation (RAG) AI agent that 
 ->Docker
 
 
-🚀 Features
+# Features
+
 📄 PDF Ingestion: Automatically loads and parses PDF documents.
 
 ✂️ Recursive Text Chunking: Splits text into smart overlapping chunks to retain semantic meaning.
