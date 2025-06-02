@@ -33,39 +33,28 @@ Open the folder in VS Code or any Python editor.
 
 IMPORTANT: In main.py, update line 28 with your PDF file name:
 
-python
-Copy
-Edit
+
 pdf_path = Path(__file__).parent / "my-document.pdf"
 📦 2. Install Required Dependencies
 Ensure you're using Python 3.10 or above. Then install the following packages:
 
-bash
-Copy
-Edit
+
 pip install langchain langchain-google-genai langchain-community langchain-qdrant qdrant-client
 🧠 3. Start Qdrant (Vector Database)
 If you haven't already, start Qdrant locally using Docker:
 
-bash
-Copy
-Edit
+
 docker run -p 6333:6333 qdrant/qdrant
 Alternatively, you can install it natively: https://qdrant.tech/documentation/quick-start
 
 🔐 4. Set Your Google Generative AI Key
 When you run the script, it will prompt:
 
-vbnet
-Copy
-Edit
 Enter your Google API key:
 Paste your Google API key here to proceed.
 
 ▶️ 5. Run the Project
-bash
-Copy
-Edit
+
 python main.py
 You'll see:
 
@@ -74,18 +63,9 @@ Copy
 Edit
 🎉 RAG AI Agent is ready!
 🗣️ Ask your question:
-Ask questions like:
-
-What are the subjects in the first semester?
-
-What are the credit requirements?
-
-What are the course categories?
 
 📂 Project Structure
-graphql
-Copy
-Edit
+
 QueryBookLM/
 │
 ├── main.py                    # Main Python script for running the RAG pipeline
