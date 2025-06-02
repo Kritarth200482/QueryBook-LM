@@ -5,12 +5,16 @@
 QueryBookLM is a lightweight Retrieval-Augmented Generation (RAG) AI agent that allows you to ask natural language questions about any PDF document (like a curriculum, brochure, or guidebook) and receive detailed, accurate answers grounded in the content. Built using LangChain, Google Gemini Pro, and Qdrant, it combines semantic search and generative AI to simulate contextual document comprehension.
 
 # Tech Stack
-Component	Description
-Python 3.10+	Base programming language
-LangChain	Framework for building LLM-powered applications
-Google Generative AI	For generating embeddings and answers (Gemini Pro + embedding-001)
-Qdrant	Vector database used to store and retrieve text chunks
-Docker
+
+->Python 3.10+	Base programming language
+
+->LangChain	Framework for building LLM-powered applications
+
+->Google Generative AI	For generating embeddings and answers (Gemini Pro + embedding-001)
+
+->Qdrant	Vector database used to store and retrieve text chunks
+
+->Docker
 
 
 🚀 Features
